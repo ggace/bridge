@@ -37,8 +37,8 @@ def gameStart():
     successPause = False
 
     myFont = pygame.font.SysFont( "arial", 30, True, False)
-    fail = myFont.render("Fail (SPACE BAR: continue, ESC : exit)", False, (255,0,0))
-    success = myFont.render("Success (SPACE BAR: continue, ESC : exit)", False, (0,255,0))
+    fail = myFont.render("Fail (SPACE BAR: 계속, ESC : 나가기)", False, (255,0,0))
+    success = myFont.render("Success (SPACE BAR: 계속, ESC : 나가기)", False, (0,255,0))
     
 
     
@@ -63,7 +63,7 @@ def gameStart():
             elif event.type == pygame.KEYDOWN:# If user release what he pressed.
                 ispressed = True
                 if event.key == pygame.K_ESCAPE:
-                    a = pyautogui.confirm('Do you want to exit from this game?', buttons=['yes', 'no'])
+                    a = pyautogui.confirm('게임을 끝내시겠습니까?', buttons=['yes', 'no'])
                     if a == 'yes':
                         return ''
 
@@ -141,7 +141,7 @@ def gameStart():
         ispressed = False
 
 
-pyautogui.alert(f"기회는 {limit}번이며 위쪽 화살표, 아래쪽 화살표를 눌러서 전진할 수 있습니다.\n숙지하셨으면 ok를 눌러주세요");    
+pyautogui.alert(f"기회는 {limit}번이며 위쪽 화살표, 아래쪽 화살표를 눌러서 전진할 수 있습니다.\n숙지하셨으면 확인을 눌러주세요");    
 while(gameStart() == 'newGame'):
     print("----- end -----")
     
