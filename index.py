@@ -7,9 +7,12 @@ pygame.init()
 count = 0
 obstacles = []
 
+limit = 5
+
 def gameStart():
     global count
     global obstacles
+    global limit
     print("----- new game -----")
 
     
@@ -33,26 +36,24 @@ def gameStart():
     pause = False
     successPause = False
 
-    print(count)
-
     myFont = pygame.font.SysFont( "arial", 30, True, False)
     fail = myFont.render("Fail (SPACE BAR: newgame, ESC : exit)", False, (255,0,0))
     success = myFont.render("Success (SPACE BAR: newgame, ESC : exit)", False, (0,255,0))
-    countFont = myFont.render(f"COUNT : {count}", False, (255,255,255))
+    
 
     
-    if count == 5:
+    if count == limit:
         obstacles = []
         count = 0
 
     if count == 0:
         for i in range(10):
             oneIsReal = random.choice([True, False])
-            print(oneIsReal)
+            
             obstacles.append({'location' : [50*i + 150,250,40,40], 'isReal' : oneIsReal, 'color' : (255,255,255)})
             obstacles.append({'location' : [50*i + 150,310,40,40], 'isReal' : not oneIsReal, 'color' : (255,255,255)})
     
-    print(len(obstacles))
+    countFont = myFont.render(f"COUNT : {count}", False, (255,255,255))
     while not done:
         screen.fill((20,20,20))
         
@@ -61,17 +62,19 @@ def gameStart():
                 done=True
             elif event.type == pygame.KEYDOWN:# If user release what he pressed.
                 ispressed = True
-                
+                if event.key == pygame.K_ESCAPE:
+                    a = pyautogui.confirm('Do you want to exit from this game?', buttons=['yes', 'no'])
+                    if a == 'yes':
+                        return ''
+
+
                 if(pause):
                     
                     if event.key == pygame.K_SPACE:
                         count += 1
                         
                         return 'newGame'
-                    elif event.key == pygame.K_ESCAPE:
-                        a = pyautogui.confirm('Do you want to exit from this game?', buttons=['yes', 'no'])
-                        if a == 'yes':
-                            return ''
+                
                 if(successPause):
                     
                     if event.key == pygame.K_SPACE:
@@ -79,10 +82,7 @@ def gameStart():
                         count = 0
                         
                         return 'newGame'
-                    elif event.key == pygame.K_ESCAPE:
-                        a = pyautogui.confirm('Do you want to exit from this game?', buttons=['yes', 'no'])
-                        if a == 'yes':
-                            return ''
+                    
                 
                 if(not pause and not successPause):
                     if(user[0] >=  600):
