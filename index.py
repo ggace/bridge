@@ -7,7 +7,7 @@ pygame.init()
 count = 0
 obstacles = []
 
-limit = 5
+limit = 4
 
 def gameStart():
     global count
@@ -37,8 +37,8 @@ def gameStart():
     successPause = False
 
     myFont = pygame.font.SysFont( "arial", 30, True, False)
-    fail = myFont.render("Fail (SPACE BAR: newgame, ESC : exit)", False, (255,0,0))
-    success = myFont.render("Success (SPACE BAR: newgame, ESC : exit)", False, (0,255,0))
+    fail = myFont.render("Fail (SPACE BAR: continue, ESC : exit)", False, (255,0,0))
+    success = myFont.render("Success (SPACE BAR: continue, ESC : exit)", False, (0,255,0))
     
 
     
@@ -53,7 +53,7 @@ def gameStart():
             obstacles.append({'location' : [50*i + 150,250,40,40], 'isReal' : oneIsReal, 'color' : (255,255,255)})
             obstacles.append({'location' : [50*i + 150,310,40,40], 'isReal' : not oneIsReal, 'color' : (255,255,255)})
     
-    countFont = myFont.render(f"COUNT : {count}", False, (255,255,255))
+    countFont = myFont.render("<> " * (limit-count), False, (255,255,255))
     while not done:
         screen.fill((20,20,20))
         
@@ -140,7 +140,8 @@ def gameStart():
         
         ispressed = False
 
-    
+
+pyautogui.alert(f"기회는 {limit}번이며 위쪽 화살표, 아래쪽 화살표를 눌러서 전진할 수 있습니다.\n숙지하셨으면 ok를 눌러주세요");    
 while(gameStart() == 'newGame'):
     print("----- end -----")
     
