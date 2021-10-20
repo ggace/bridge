@@ -2,11 +2,12 @@ import pygame
 import random
 import pyautogui
 
+#초기화
 pygame.init()
 
 count = 0
 obstacles = []
-
+#시도 횟수 제한
 limit = 4
 
 def gameStart():
@@ -43,6 +44,15 @@ def gameStart():
 
     #시도 횟수 처리: 변수 초기화
     if count == limit:
+        a = pyautogui.confirm('주어진 기회가 끝났습니다.\n게임을 다시 시작하시겠습니까?', buttons=['yes', 'no'])
+        if a == 'yes':
+            pass
+        else:
+            b = pyautogui.confirm('주어진 기회가 끝났습니다.\n게임을 끝내시겠습니까?', buttons=['yes', 'no'])
+            if b == 'yes':
+                return ''
+            else:
+                return 'newGame'
         obstacles = []
         count = 0
     #시도 횟수 처리: 다리 정보 재설정
