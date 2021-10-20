@@ -1,7 +1,10 @@
 import pygame
 import random
+import pyautogui
 
 pygame.init()
+
+
 
 def gameStart():
     print("----- new game -----")
@@ -44,9 +47,13 @@ def gameStart():
                 
                 if(pause or successPause):
                     if event.key == pygame.K_SPACE:
-                        return 'newGame'
+                        a = pyautogui.confirm('Do you want play this game again?', buttons=['yse', 'no'])
+                        if a == 'yes':
+                            return 'newGame'
                     elif event.key == pygame.K_ESCAPE:
-                        return ''
+                        a = pyautogui.confirm('Do you want to exit from this game?', buttons=['yse', 'no'])
+                        if a == 'yes':
+                            return ''
                 if(not pause and not successPause):
                     if(user[0] >=  600):
                         user = [650 + 70, 300]
