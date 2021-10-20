@@ -37,8 +37,8 @@ def gameStart():
     successPause = False
 
     myFont = pygame.font.SysFont( "arial", 30, True, False)
-    fail = myFont.render("Fail (SPACE BAR: 계속, ESC : 나가기)", False, (255,0,0))
-    success = myFont.render("Success (SPACE BAR: 계속, ESC : 나가기)", False, (0,255,0))
+    fail = myFont.render("Fail (SPACE BAR: continue, ESC : exit)", False, (255,0,0))
+    success = myFont.render("Success (SPACE BAR: continue, ESC : exit)", False, (0,255,0))
     
 
     
