@@ -1,6 +1,13 @@
-import pygame
+import os
 import random
-import pyautogui
+try:
+    import pygame
+    import pyautogui
+except:
+    os.system("python -m pip install pygame");
+    os.system("python -m pip install pyautogui");
+    import pygame
+    import pyautogui
 
 #초기화
 pygame.init()
