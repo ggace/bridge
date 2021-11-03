@@ -34,6 +34,8 @@ def gameStart():
     size  = [800,600]
     screen= pygame.display.set_mode(size)
 
+    pygame.display.set_caption("Squid Game - Bridge Game")
+
     #게임 시작, 끝 사각형
     start = [0, 100, 140, 400]
     end =   [650, 100, 140, 400]
@@ -66,7 +68,7 @@ def gameStart():
     if count == 0:
         for i in range(10):
             oneIsReal = random.choice([True, False])
-            
+            print(oneIsReal)
             obstacles.append({'location' : [50*i + 150,250,40,40], 'isReal' : oneIsReal, 'color' : (255,255,255)})
             obstacles.append({'location' : [50*i + 150,310,40,40], 'isReal' : not oneIsReal, 'color' : (255,255,255)})
 
